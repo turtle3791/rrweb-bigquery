@@ -48,6 +48,9 @@ export class GoogleCloudStorageObjectStore implements ObjectStore {
   }
 
   private resolvePath(objectPath: string): string {
-    return `${this.prefix.replace(/\/$/, '')}/${objectPath.replace(/^\/+/, '')}`;
+    return `${this.prefix.replace(/\/$/, '')}/${objectPath.replace(
+      /^\/+/,
+      '',
+    )}`;
   }
 }

@@ -131,7 +131,10 @@ export type PerformanceMetricSnapshot = {
 };
 
 export function createSessionId(): string {
-  if ('crypto' in globalThis && typeof globalThis.crypto.randomUUID === 'function') {
+  if (
+    'crypto' in globalThis &&
+    typeof globalThis.crypto.randomUUID === 'function'
+  ) {
     return globalThis.crypto.randomUUID();
   }
 

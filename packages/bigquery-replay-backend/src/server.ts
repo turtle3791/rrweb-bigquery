@@ -13,10 +13,7 @@ import {
   SessionService,
   ValidationError,
 } from './session-service.js';
-import {
-  BigQuerySessionIndex,
-  FileSessionIndex,
-} from './session-index.js';
+import { BigQuerySessionIndex, FileSessionIndex } from './session-index.js';
 
 export async function createServer(config: ServerConfig = readServerConfig()) {
   const app = Fastify({
@@ -143,10 +140,7 @@ function requireConfig(value: string | undefined, envName: string): string {
   return value;
 }
 
-function sendError(
-  reply: FastifyReply,
-  error: unknown,
-) {
+function sendError(reply: FastifyReply, error: unknown) {
   if (error instanceof NotFoundError) {
     return reply.code(404).send({ message: error.message });
   }

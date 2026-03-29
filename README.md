@@ -39,10 +39,7 @@ flowchart LR
   ReplayUI["Replay UI :5173"] -->|"search & fetch"| Backend
 ```
 
-
-
 ### New Packages
-
 
 | Package                            | Path                                 | Purpose                                                                                                        |
 | ---------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
@@ -50,7 +47,6 @@ flowchart LR
 | `@rrweb/bigquery-replay-recorder`  | `packages/bigquery-replay-recorder`  | Client-side recorder wrapper that buffers rrweb events and uploads chunks to the backend                       |
 | `@rrweb/bigquery-replay-backend`   | `packages/bigquery-replay-backend`   | Fastify API server that ingests sessions, stores chunks in GCS or filesystem, and indexes metadata in BigQuery |
 | `@rrweb/bigquery-replay-app`       | `packages/bigquery-replay-app`       | React/Vite replay UI with session search, filtering, and rrweb playback                                        |
-
 
 ### Recording Flow
 
@@ -86,8 +82,6 @@ sequenceDiagram
   Backend-->>RecordingScript: 200 OK
 ```
 
-
-
 ### Replay Flow
 
 ```mermaid
@@ -118,8 +112,6 @@ sequenceDiagram
   ReplayUI->>ReplayUI: Initialize rrweb Replayer
   ReplayUI-->>User: Interactive playback with controls
 ```
-
-
 
 ### Quick Start
 
@@ -165,6 +157,5 @@ This separation keeps BigQuery fast for queries while storing arbitrarily large 
 
 ## Roadmap
 
-- Add production oauth support for the recording and replay 
+- Add production oauth support for the recording and replay
 - Release a productionalizable version
-

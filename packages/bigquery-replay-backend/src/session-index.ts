@@ -49,7 +49,8 @@ export class FileSessionIndex implements SessionIndex {
       .filter((session) => matchesFilters(session, filters))
       .sort(
         (left, right) =>
-          new Date(right.startedAt).getTime() - new Date(left.startedAt).getTime(),
+          new Date(right.startedAt).getTime() -
+          new Date(left.startedAt).getTime(),
       );
     const offset = filters.page * filters.pageSize;
 
@@ -199,7 +200,9 @@ export class BigQuerySessionIndex implements SessionIndex {
 
     return {
       queryDurationMs: Date.now() - startedAt,
-      sessions: rows.map((row) => mapBigQueryRow(row as Record<string, unknown>)),
+      sessions: rows.map((row) =>
+        mapBigQueryRow(row as Record<string, unknown>),
+      ),
       totalCount: Number(
         (countRows[0] as Record<string, unknown> | undefined)?.totalCount ?? 0,
       ),

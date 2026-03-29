@@ -27,7 +27,9 @@ export async function fetchSessions(query: {
   searchParams.set('page', String(query.page ?? 0));
   searchParams.set('pageSize', String(query.pageSize ?? 20));
 
-  return request<SearchSessionsResponse>(`/sessions?${searchParams.toString()}`);
+  return request<SearchSessionsResponse>(
+    `/sessions?${searchParams.toString()}`,
+  );
 }
 
 export async function fetchSessionReplay(

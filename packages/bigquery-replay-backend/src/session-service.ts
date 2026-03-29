@@ -93,12 +93,12 @@ export class SessionService {
     return { session };
   }
 
-  async appendChunk(
-    request: UploadChunkRequest,
-  ): Promise<UploadChunkResponse> {
+  async appendChunk(request: UploadChunkRequest): Promise<UploadChunkResponse> {
     const session = await this.requireSession(request.sessionId);
     if (session.userId !== request.userId) {
-      throw new ValidationError('Chunk userId does not match the session userId');
+      throw new ValidationError(
+        'Chunk userId does not match the session userId',
+      );
     }
 
     const startedAt = Date.now();
@@ -136,8 +136,7 @@ export class SessionService {
             left.chunkIndex - right.chunkIndex,
         );
         manifest.totalEventCount = manifest.chunks.reduce(
-          (sum: number, entry: ReplayChunkDescriptor) =>
-            sum + entry.eventCount,
+          (sum: number, entry: ReplayChunkDescriptor) => sum + entry.eventCount,
           0,
         );
         manifest.updatedAt = nowIsoString();
@@ -199,7 +198,9 @@ export class SessionService {
     };
   }
 
-  async searchSessions(filters: SearchFilters): Promise<SearchSessionsResponse> {
+  async searchSessions(
+    filters: SearchFilters,
+  ): Promise<SearchSessionsResponse> {
     const result = await this.sessionIndex.searchSessions(filters);
     this.metricsStore.recordQueryDuration(result.queryDurationMs);
 
@@ -261,9 +262,13 @@ export class SessionService {
     return JSON.parse(decompressed.toString('utf8')) as eventWithTime[];
   }
 
-  private async readManifest(session: SessionIndexRecord): Promise<ReplayManifest> {
+  private async readManifest(
+    session: SessionIndexRecord,
+  ): Promise<ReplayManifest> {
     try {
-      const manifestContents = await this.objectStore.read(session.manifestPath);
+      const manifestContents = await this.objectStore.read(
+        session.manifestPath,
+      );
       return JSON.parse(manifestContents.toString('utf8')) as ReplayManifest;
     } catch (error) {
       if (isMissingObjectError(error)) {

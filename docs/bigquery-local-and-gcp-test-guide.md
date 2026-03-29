@@ -1,5 +1,7 @@
 # RRWeb BigQuery Backend Test Guide
+
 ## Press Ctrl+Shift+V to view the rendering of the files
+
 This guide walks through:
 
 1. Local testing with BigQuery and local filesystem storage
@@ -155,7 +157,7 @@ curl http://localhost:4318/health
 Expected response:
 
 ```json
-{"status":"ok"}
+{ "status": "ok" }
 ```
 
 ### 4. Start a test session
