@@ -1,0 +1,26 @@
+{
+  "name": "@rrweb/bigquery-replay-recorder",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "check-types": "tsc -noEmit",
+    "prepublish": "yarn build",
+    "lint": "yarn eslint src/**/*.ts"
+  },
+  "dependencies": {
+    "@rrweb/bigquery-replay-contracts": "0.0.0",
+    "@rrweb/record": "^2.0.0-alpha.20"
+  }
+}

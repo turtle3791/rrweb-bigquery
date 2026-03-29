@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist-types",
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@rrweb/bigquery-replay-contracts": [
+        "../bigquery-replay-contracts/src/index.ts"
+      ],
+      "~/*": ["src/*"]
+    },
+    "tsBuildInfoFile": "./tsconfig.tsbuildinfo"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["dist", "node_modules"],
+  "references": [
+    {
+      "path": "../bigquery-replay-contracts"
+    }
+  ]
+}
