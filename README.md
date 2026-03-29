@@ -16,12 +16,9 @@ rrweb is mainly composed of 3 parts:
 - **[rrweb](https://github.com/rrweb-io/rrweb)**, including two functions, record and replay. The record function is used to record all the mutations in the DOM; the replay is to replay the recorded mutations one by one according to the corresponding timestamp.
 - **[rrweb-player](https://github.com/rrweb-io/rrweb/tree/master/packages/rrweb-player/)**, is a player UI for rrweb, providing GUI-based functions like pause, fast-forward, drag and drop to play at any time.
 
-<iframe width="560" height="315" 
-src="https://www.youtube.com/embed/1MDFuzmIock" 
-title="Demo of Session Recorder" 
-frameborder="0" 
-allowfullscreen>
-</iframe>
+Demo Video:
+"https://www.youtube.com/embed/1MDFuzmIock" 
+
 
 ## Modifcations in this experimental version
 
